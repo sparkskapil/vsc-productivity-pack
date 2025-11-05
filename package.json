@@ -2,9 +2,13 @@
   "name": "vsc-productivity-pack",
   "displayName": "VSC Productivity Pack",
   "description": "A collection of productivity commands for developers",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Kapil Verma",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sparkskapil/vsc-productivity-pack.git"
+  },
   "engines": {
     "vscode": "^1.105.0"
   },
@@ -19,6 +23,10 @@
       {
         "command": "vscpp.p4.annotate",
         "title": "VSC PP: Perforce Annotate Current File"
+      },
+      {
+        "command": "vscpp.git.blame",
+        "title": "VSC PP: Git Blame Current File"
       }
     ]
   },

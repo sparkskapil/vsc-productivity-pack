@@ -1,6 +1,6 @@
 # VSC Productivity Pack
 
-A VS Code extension providing a collection of productivity commands for developers working with Perforce and other development workflows.
+A VS Code extension providing a collection of productivity commands for developers working with Perforce and Git workflows.
 
 ## Features
 
@@ -13,14 +13,28 @@ A VS Code extension providing a collection of productivity commands for develope
 - Opens the generated annotate/blame file in the editor
 - Shows changelist numbers and usernames for each line
 
+### Git Commands
+
+#### Git Blame
+- Run `git blame` on the active file with formatted output
+- Shows commit ID (short hash), author name, and code line
+- Validates file is in a Git repository and tracked by Git
+- Generates a blame file in the temp directory (`/tmp/gitblame/` on Linux/Mac, `%temp%/gitblame/` on Windows)
+- Opens the generated blame file automatically
+
 ## Requirements
 
+### For Perforce Commands:
 - Perforce command-line client (`p4`) must be installed and available in your PATH
 - Files must be in a Perforce workspace with proper configuration:
   - P4CLIENT must be set
   - P4PORT must be set
   - P4USER must be set
 - Configure using a `p4config.txt` file in your depot root or run `p4 set P4CONFIG=p4config.txt`
+
+### For Git Commands:
+- Git must be installed and available in your PATH
+- File must be in a Git repository and tracked by Git
 
 ## Usage
 
@@ -32,11 +46,20 @@ A VS Code extension providing a collection of productivity commands for develope
 4. Type "VSC PP: Perforce Annotate Current File" and select the command
 5. The annotate output will be saved to a `.blame` file and opened automatically
 
+### Git Blame
+
+1. Open a file that is tracked in a Git repository
+2. Save the file (if unsaved)
+3. Open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac)
+4. Type "VSC PP: Git Blame Current File" and select the command
+5. The blame output will be saved to a `.blame` file and opened automatically
+
 ## Commands
 
 | Command | Description |
 |---------|-------------|
 | `VSC PP: Perforce Annotate Current File` | Run p4 annotate on the active file |
+| `VSC PP: Git Blame Current File` | Run git blame on the active file |
 
 ## Extension Settings
 
@@ -56,22 +79,22 @@ Future commands planned for this productivity pack:
 
 ## Release Notes
 
+### 1.1.0
+
+- Added Git Blame command
+- Git blame output includes commit ID, author, and code line
+- Enhanced validation: checks if file is tracked by Git
+- Repository field added to package.json
+
 ### 1.0.0
 
 - First stable release
 - MIT License added
 - Production-ready Perforce Annotate command
-
-### 0.1.0
-
-- Refactored to VSC Productivity Pack
-- Modular architecture for easier expansion
-- Added P4 workspace validation
+- Refactored to VSC Productivity Pack with modular architecture
+- Added P4 workspace validation (P4CLIENT, P4PORT, P4USER)
 - Improved error messages
-
-### 0.0.1
-
-Initial release with Perforce Annotate command
+- Separated commands and utilities into modular structure
 
 ---
 
