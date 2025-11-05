@@ -3,6 +3,7 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { exec } from 'child_process';
 import { promisify } from 'util';
+import { getVscppTempSubdir } from '../utils/tempFolder';
 
 const execAsync = promisify(exec);
 
@@ -49,14 +50,8 @@ export async function gitBlame() {
 			return;
 		}
 
-		// Get temp directory
-		const tempDir = process.env.TMPDIR || process.env.TEMP || process.env.TMP || '/tmp';
-		const gitBlameDir = path.join(tempDir, 'gitblame');
-
-		// Create the gitblame directory if it doesn't exist
-		if (!fs.existsSync(gitBlameDir)) {
-			fs.mkdirSync(gitBlameDir, { recursive: true });
-		}
+		// Get temp directory for git blame files
+		const gitBlameDir = getVscppTempSubdir('gitblame');
 
 		// Generate output file name
 		const fileName = path.basename(filePath);

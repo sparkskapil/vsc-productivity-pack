@@ -1,8 +1,9 @@
 {
   "name": "vsc-productivity-pack",
   "displayName": "VSC Productivity Pack",
-  "description": "A collection of productivity commands for developers",
+  "description": "Productivity commands for Perforce annotate, Git blame, and temp file management",
   "version": "1.1.0",
+  "publisher": "sparkskapil",
   "author": "Kapil Verma",
   "license": "MIT",
   "repository": {
@@ -27,6 +28,10 @@
       {
         "command": "vscpp.git.blame",
         "title": "VSC PP: Git Blame Current File"
+      },
+      {
+        "command": "vscpp.cleanup",
+        "title": "VSC PP: Clean Up Temporary Files"
       }
     ]
   },

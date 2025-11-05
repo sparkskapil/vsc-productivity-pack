@@ -3,6 +3,7 @@ import * as vscode from 'vscode';
 // Import all command handlers
 import { p4Annotate } from './annotate';
 import { gitBlame } from './gitBlame';
+import { cleanupTempFiles } from './cleanup';
 
 /**
  * Register all commands for the VSC Productivity Pack extension
@@ -16,6 +17,11 @@ export function registerCommands(context: vscode.ExtensionContext) {
 	// Git commands
 	context.subscriptions.push(
 		vscode.commands.registerCommand('vscpp.git.blame', gitBlame)
+	);
+
+	// Utility commands
+	context.subscriptions.push(
+		vscode.commands.registerCommand('vscpp.cleanup', cleanupTempFiles)
 	);
 
 	// Future commands can be added here:

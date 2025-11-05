@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
 import { validateP4Workspace, executeP4Command } from '../utils/p4Client';
+import { getVscppTempSubdir } from '../utils/tempFolder';
 
 /**
  * Command to run p4 annotate on the currently active file
@@ -35,14 +36,8 @@ export async function p4Annotate() {
 			return;
 		}
 
-		// Get temp directory (using TMPDIR, TEMP, or TMP environment variable, or /tmp on Linux)
-		const tempDir = process.env.TMPDIR || process.env.TEMP || process.env.TMP || '/tmp';
-		const p4annotateDir = path.join(tempDir, 'p4annotate');
-
-		// Create the p4annotate directory if it doesn't exist
-		if (!fs.existsSync(p4annotateDir)) {
-			fs.mkdirSync(p4annotateDir, { recursive: true });
-		}
+		// Get temp directory for p4 annotate files
+		const p4annotateDir = getVscppTempSubdir('p4annotate');
 
 		// Generate output file name
 		const fileName = path.basename(filePath);

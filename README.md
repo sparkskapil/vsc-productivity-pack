@@ -60,6 +60,7 @@ A VS Code extension providing a collection of productivity commands for develope
 |---------|-------------|
 | `VSC PP: Perforce Annotate Current File` | Run p4 annotate on the active file |
 | `VSC PP: Git Blame Current File` | Run git blame on the active file |
+| `VSC PP: Clean Up Temporary Files` | Delete all temporary files created by VSC PP |
 
 ## Extension Settings
 
@@ -67,8 +68,9 @@ This extension does not currently contribute any settings.
 
 ## Known Issues
 
-- Files must be saved before running annotate
-- Only works with files in Perforce depot
+- Files must be saved before running annotate or blame commands
+- Perforce commands only work with files in Perforce depot
+- Git commands only work with tracked files in Git repository
 
 ## Roadmap
 
@@ -81,10 +83,13 @@ Future commands planned for this productivity pack:
 
 ### 1.1.0
 
-- Added Git Blame command
-- Git blame output includes commit ID, author, and code line
-- Enhanced validation: checks if file is tracked by Git
+- Added Git Blame command with commit ID, author, and code line display
+- Added cleanup command to delete temporary files
+- Centralized temp folder management (`/tmp/vsc-productivity-pack/` or OS equivalent)
+- Enhanced validation: checks if Git file is tracked
+- Added publisher field: `sparkskapil`
 - Repository field added to package.json
+- Refactored commands to use shared temp folder utilities
 
 ### 1.0.0
 
